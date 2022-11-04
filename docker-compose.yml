@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+  postgres:
+    image: postgres:14-alpine
+    container_name: Discuss-Postgres
+    env_file: ./env/.postgres.env
+    volumes:
+      - DiscussDataPostgres:/var/lib/postgresql
+    ports:
+      - 5432:5432
+    networks:
+      - discuss-network
+
+networks:
+  discuss-network:
+    driver: bridge
+
+volumes:
+  DiscussDataPostgres:
