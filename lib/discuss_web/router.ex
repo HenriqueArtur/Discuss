@@ -18,7 +18,14 @@ defmodule DiscussWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    # resources "/topics", TopicController
+    get "/topics", TopicController, :index
+    get "/topics/:id/edit", TopicController, :edit
     get "/topics/new", TopicController, :new
+    get "/topics/:id", TopicController, :show
+    post "/topics", TopicController, :create
+    patch "/topics/:id", TopicController, :update
+    delete "/topics/:id", TopicController, :delete
   end
 
   # Other scopes may use custom stacks.
